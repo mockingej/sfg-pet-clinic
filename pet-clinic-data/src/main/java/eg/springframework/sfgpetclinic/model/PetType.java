@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "types")
+@Table(name = "TYPES")
 public class PetType extends BaseEntity {
 
-    @Column(name = "name")
+    @Column(name = "NAME")
     private String name;
 
     public String getName() {
