@@ -1,11 +1,25 @@
 package eg.springframework.sfgpetclinic.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "VISITS")
 public class Visit extends BaseEntity {
+
+    @Builder
+    public Visit(Long id, LocalDate date, String description, Pet pet) {
+        super(id);
+        this.date = date;
+        this.description = description;
+        this.pet = pet;
+    }
 
     @Column(name = "DATE")
     private LocalDate date;
@@ -16,28 +30,4 @@ public class Visit extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "PET_ID")
     private Pet pet;
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Pet getPet() {
-        return pet;
-    }
-
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
 }
